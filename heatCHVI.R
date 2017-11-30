@@ -1,18 +1,5 @@
 rm(list=ls())
 
-setwd("~/CapAndTradeProceeds/CalfireUrbanForestry/")
-
-
-
-CES2 <- read.csv("CES3_tracts.csv", header=T) %>%
-  mutate(tractNumber = Census.Tract) %>%
-  select(tractNumber, Total.Population, CES.3.0.Percentile)
-
-HPI2 <- read.csv("HDI1_tracts.csv", header=T) %>%
-  mutate(tractNumber = CensusTract) %>%
-  select(tractNumber, pop2010, hdi_pctile, ces2_pctile)
-
-
 library(tidyverse)
 library(shiny)
 library(ggvis)
