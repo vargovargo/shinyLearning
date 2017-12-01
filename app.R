@@ -19,8 +19,12 @@ ui <- pageWithSidebar(
   sidebarPanel(
     selectInput(inputId = "co1", label = "Select a county", choices = unique(foo$County)),
     selectInput(inputId = "co2", label = "Select a second county", choices = unique(foo$County)),
-    selectInput(inputId = "co3", label = "Select a third county", choices = unique(foo$County))
-  ),
+    selectInput(inputId = "co3", label = "Select a third county", choices = unique(foo$County)),
+    # Button
+    downloadButton("downloadData", "Download All Counties")
+
+    
+    ),
   mainPanel(plotOutput('plot1'))
 )
   
@@ -34,9 +38,16 @@ server <- function(input, output, session) {
       geom_hline(yintercept = avg2050, color="blue", alpha=0.4, linetype="dashed") + 
       geom_hline(yintercept = avg2085, color="red", alpha=0.4, linetype="dashed") +
       ylab("Annual Extreme Heat Days")
-  
-    
   })
+  
+  # Downloadable csv of selected dataset ----
+  output$downloadData <- downloadHandler(
+    filename = "CACountiesExtremeHeatProjectedDays.csv",
+    content = function(file) {
+      write.csv(foo, file, row.names = FALSE)
+    }
+  )
+  
   
 }
 
