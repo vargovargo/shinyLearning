@@ -3,7 +3,10 @@ rm(list=ls())
 library(tidyverse)
 library(shiny)
 
-foo <- read.csv("https://raw.githubusercontent.com/vargovargo/CHVIr/master/heatCHVIcounty.csv", header=T)
+foo <- read.csv("https://raw.githubusercontent.com/vargovargo/CHVIr/master/heatCHVIcounty.csv", header=T) %>% 
+  mutate(Year = factor(Year, levels=c("2050","2085")))
+
+
 
 stateTable <- foo %>% group_by(Year) %>% 
   summarise(stateAvg = mean(Extreme.Heat.Days, na.rm=T))
