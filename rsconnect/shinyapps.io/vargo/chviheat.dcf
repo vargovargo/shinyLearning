@@ -5,9 +5,9 @@ account: vargo
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 242261
-bundleId: 1107826
+bundleId: 1107848
 url: https://vargo.shinyapps.io/chviheat/
-when: 1512100585.8862
+when: 1512101432.30901
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: .gitattributes|heatCHVI.R|heatCHVIcounty.csv|kMeans_CES.R|template.R|testProject1.R
