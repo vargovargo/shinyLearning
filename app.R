@@ -1,14 +1,9 @@
-#rm(list=ls())
+rm(list=ls())
 
 library(tidyverse)
 library(shiny)
-library(ggvis)
 
-
-#temp <- read.csv("~/CHVI_copy/allCHVI.csv", header=T) 
- 
-foo <- filter(temp, ind_definition =="Projected number of extreme heat days" & geotype %in% c("CO")) %>%
-  select(reportyear, county_name, estimate, region_name)
+foo <- read.csv("https://raw.githubusercontent.com/vargovargo/CHVIr/master/heatCHVIcounty.csv", header=T)
 
 stateTable <- foo %>% group_by(reportyear) %>% 
   summarise(stateAvg = mean(estimate, na.rm=T))
